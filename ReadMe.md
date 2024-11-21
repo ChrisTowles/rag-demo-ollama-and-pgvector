@@ -29,7 +29,8 @@ pip install -r pip.requirements.txt
 To use [Ollama](https://github.com/ollama/ollama) for embeddings and run the `nomic-embed-text` model
 
 ```bash
-ollama run nomic-embed-text
+ollama run llama3.2 # for chat
+ollama run nomic-embed-text # for embeddings
 ```
 
 
@@ -45,7 +46,31 @@ docker compose up -d
 
 ```
 
+
+## Run App
+
+
+```bash
+streamlit run app.py
+```
+
+Open [localhost:8501](http://localhost:8501) to view your RAG app.
+
+
+
+## Shutdown 
+
+
+```bash
+# stop containers
+docker compose down
+
+# stop containers and remove volumes
+docker compose down --volumes
+```
+
+
 ## Links
 
 - https://github.com/phidatahq/phidata/blob/main/cookbook/assistants/llms/groq/rag/README.md?plain=1
-- 
+- https://github.com/ChingWeiChan/ollama-streamlit-demo/blob/main/main.py

@@ -1,12 +1,17 @@
+volumes:
+  db_volume:
+
 services:
 
+
+
   db:
-    image: postgres:16
+    image: pgvector/pgvector:pg16
     environment:
       - POSTGRES_USER=pguser
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=local_rag
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - db_volume:/var/lib/postgresql/data
     ports:
       - 5432:5432
