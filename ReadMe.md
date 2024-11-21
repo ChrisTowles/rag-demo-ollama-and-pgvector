@@ -34,6 +34,14 @@ ollama run nomic-embed-text # for embeddings
 ```
 
 
+## Get dataset
+
+```bash
+curl -L -o ./area/postgres/dataset/books-dataset.zip https://www.kaggle.com/api/v1/datasets/download/saurabhbagchi/books-dataset
+
+unzip ./area/postgres/dataset/books-dataset.zip -d ./area/postgres/dataset
+```
+
 ## Postgres
 
 
