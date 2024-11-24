@@ -35,17 +35,8 @@ ollama run nomic-embed-text # for embeddings
 ```
 
 
-## Get dataset
-
-```bash
-curl -L -o ./area/postgres/dataset/books-dataset.zip https://www.kaggle.com/api/v1/datasets/download/saurabhbagchi/books-dataset
-
-unzip ./area/postgres/dataset/books-dataset.zip -d ./area/postgres/dataset
-```
 
 ## Postgres
-
-
 
 ```bash
 docker compose up
@@ -55,7 +46,6 @@ docker compose up -d
 
 ```
 
-
 ## Run App
 
 ```bash
@@ -63,10 +53,6 @@ python src/main.py
 ```
 
 On first load if no embeddings in the DB it will take a second and load them.
-
-
-
-
 
 
 ## Shutdown 
@@ -86,7 +72,6 @@ remove python environment
 pyenv virtualenv-delete  rag_demo_towles
 
 ```
-
 
 ## Links
 

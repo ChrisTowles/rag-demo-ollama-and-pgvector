@@ -13,6 +13,6 @@ services:
       - POSTGRES_DB=local_rag_db
     volumes:
       - db_volume:/var/lib/postgresql/data
-      - ./area/postgres/:/docker-entrypoint-initdb.d/
+      - ./config/postgres/:/docker-entrypoint-initdb.d/
     ports:
       - 5432:5432
