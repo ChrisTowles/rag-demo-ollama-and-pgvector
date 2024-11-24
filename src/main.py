@@ -11,6 +11,11 @@ from db import (
 )
 import inquirer
 
+from rich.console import Console
+
+
+### Globals
+console = Console()
 
 def prompt_with_question(prompt: str, conn):
     prompt_embedding = generate_embedding_from_text(text=prompt, title="none")
@@ -27,16 +32,17 @@ def prompt_with_question(prompt: str, conn):
 
     reply = prompt_with_additional_data(data=additional_data, prompt=prompt)
 
-    print("----------------PAG Similar Search Result-----------------------")
+    console.print("----------------PAG Similar Search Result-----------------------", style="yellow")
 
     for x in similar_search_result:
         print(x.content)
         print("----------------")
 
-    print("----------------Prompt-----------------------")
+    
+    console.print("----------------Prompt-----------------------", style="yellow")
     print(prompt)
 
-    print("----------------Reply-----------------------")
+    console.print("----------------Reply-----------------------", style="yellow")
     print(reply)
 
 
@@ -47,30 +53,31 @@ def main():
     conn = create_db_connection()
 
     embeddings_count = get_embeddings_count(conn)
-    print(f"embeddings count: {embeddings_count}")
+    console.print(f"embeddings count: {embeddings_count}",style="blue")
 
     # Load embeddings if none found.
     if embeddings_count == 0:
-        print("no embeddings found in the database so loading them.")
+        console.print("no embeddings found in the database so loading them.", style="blue")
         embeddings_list = generate_embedding_from_url(url_to_raw_text=url)
         batch_insert_embeddings(conn, embeddings_list)
         embeddings_count = get_embeddings_count(conn)
-        print(f"embeddings count: {embeddings_count}")
+        console.print(f"embeddings count: {embeddings_count}", style="blue")
 
     prompt = "How many stores did they open for business?"
     prompt_with_question(prompt=prompt, conn=conn)
 
-    print("Ask your own question")
+    console.print("Ask your own question", style="green")
 
     keep_asking = True
     while keep_asking:
-        print("enter '/bye' to exit")
+        console.print("enter '/bye' to exit", style="green")
 
         questions = [inquirer.Text("long_text", message="What Question do you have ")]
         answers = inquirer.prompt(questions)
 
         if answers["long_text"] == "/bye":
             keep_asking = False
+            console.print("--------------Done-------------------", style="green")
         else:
             prompt_with_question(prompt=answers["long_text"], conn=conn)
 

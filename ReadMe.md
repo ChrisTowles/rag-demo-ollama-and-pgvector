@@ -58,9 +58,8 @@ docker compose up -d
 
 ## Run App
 
-
 ```bash
-python main.py
+python src/main.py
 ```
 
 On first load if no embeddings in the DB it will take a second and load them.
