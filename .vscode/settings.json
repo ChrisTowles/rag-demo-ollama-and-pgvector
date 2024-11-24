@@ -1,0 +1,9 @@
+{
+    "cSpell.words": [
+        "nomic",
+        "OLLAMA"
+    ],
+    "explorer.fileNesting.patterns":{
+        "*.py":"${capture}_test.py"
+    },
+}

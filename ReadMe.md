@@ -31,6 +31,7 @@ To use [Ollama](https://github.com/ollama/ollama) for embeddings and run the `no
 ```bash
 ollama run llama3.2 # for chat
 ollama run nomic-embed-text # for embeddings
+
 ```
 
 
@@ -59,10 +60,13 @@ docker compose up -d
 
 
 ```bash
-streamlit run app.py
+python main.py
 ```
 
-Open [localhost:8501](http://localhost:8501) to view your RAG app.
+On first load if no embeddings in the DB it will take a second and load them.
+
+
+
 
 
 
@@ -75,6 +79,13 @@ docker compose down
 
 # stop containers and remove volumes
 docker compose down --volumes
+```
+
+remove python environment
+
+```bash
+pyenv virtualenv-delete  rag_demo_towles
+
 ```
 
 
@@ -91,3 +102,5 @@ docker compose down --volumes
 - https://docs.mistral.ai/guides/rag/#:~:text=Split%20document%20into%20chunks%E2%80%8B,and%20we%20get%2037%20chunks
 - https://www.timescale.com/blog/postgresql-as-a-vector-database-create-store-and-query-openai-embeddings-with-pgvector/
   - has some good chunking code
+- https://stephencollins.tech/posts/how-to-use-postgresql-to-store-and-query-vector-embeddings
+  - good example code and tokenizer libs

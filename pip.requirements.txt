@@ -1,8 +1,8 @@
 
-ollama
-pgvector
-phidata
-psycopg[binary]
-pypdf
-sqlalchemy
-streamlit
+ollama == 0.4.1
+pgvector ==  0.3.6
+psycopg2-binary == 2.9.10
+pytest == 8.3.3
+inquirer == 3.4.0
+requests == 2.32.3
+numpy == 2.1.3
